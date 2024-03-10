@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">NeomTask</string>
+    <string name="error_couldnt_reach_server">\"Oops! Couldn\'t reach server. Check your internet connection.\"</string>
+    <string name="oops_something_went_wrong">\"Oops! Something went wrong. Please try again.\"</string>
+    <string name="error_unknown">Unknown error</string>
+    <string name="back_arrow">Back Arrow</string>
+    <string name="home_title">Home</string>
+    <string name="coffee_image">Coffee Image</string>
+    <string name="empty_data">There is no Data to show</string>
+</resources>
