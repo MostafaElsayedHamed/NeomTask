@@ -38,15 +38,18 @@ fun ScreenTobBar(
 
     ) {
         if (showBackIcon) {
-            IconButton(onClick = onBackPressed) {
+            IconButton(
+                onClick = onBackPressed,
+                modifier = Modifier.padding(
+                    top = MaterialTheme.spacing.sixteen,
+                    bottom = MaterialTheme.spacing.sixteen
+                )
+            ) {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_arrow_back),
                     contentDescription = stringResource(id = R.string.back_arrow),
-                    modifier = Modifier.padding(
-                        top = MaterialTheme.spacing.sixteen,
-                        bottom = MaterialTheme.spacing.sixteen
+
                     )
-                )
             }
         }
 

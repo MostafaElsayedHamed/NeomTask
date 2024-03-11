@@ -61,6 +61,7 @@ data class Spacing(
     val ninetySix: Dp = 96.dp,
     val ninetyEight: Dp = 98.dp,
     val hundred: Dp = 100.dp,
+    val twoHundred: Dp = 200.dp,
 )
 
 val LocalSpacing = compositionLocalOf { Spacing() }
