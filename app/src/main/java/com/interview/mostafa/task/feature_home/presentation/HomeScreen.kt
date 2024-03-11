@@ -1,5 +1,6 @@
 package com.interview.mostafa.task.feature_home.presentation
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -10,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -24,14 +26,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import coil.compose.AsyncImage
-import coil.request.ImageRequest
+import coil.compose.rememberAsyncImagePainter
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.interview.mostafa.task.R
@@ -154,12 +156,13 @@ fun CoffeeItem(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            AsyncImage(
-                modifier = Modifier.height(MaterialTheme.spacing.hundred),
-                model = ImageRequest.Builder(LocalContext.current).data(coffeeModel.image)
-                    .crossfade(true)
-                    .build(),
+            Image(
+                painter = rememberAsyncImagePainter(model = coffeeModel.image),
                 contentDescription = stringResource(id = R.string.coffee_image),
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .size(MaterialTheme.spacing.hundred)
+                    .clip(MaterialTheme.shapes.large)
             )
             Spacer(modifier = Modifier.height(MaterialTheme.spacing.eight))
             Text(

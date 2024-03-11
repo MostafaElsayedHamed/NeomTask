@@ -1,5 +1,6 @@
 package com.interview.mostafa.task.feature_details
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -16,13 +17,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import coil.compose.AsyncImage
-import coil.request.ImageRequest
+import coil.compose.rememberAsyncImagePainter
 import com.interview.mostafa.task.R
 import com.interview.mostafa.task.core.component.ScreenTobBar
 import com.interview.mostafa.task.core.spacing
@@ -50,12 +51,13 @@ fun DetailsScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Top
         ) {
-            AsyncImage(
-                modifier = Modifier.size(MaterialTheme.spacing.twoHundred),
-                model = ImageRequest.Builder(LocalContext.current).data(viewModel.image)
-                    .crossfade(true)
-                    .build(),
+            Image(
+                painter = rememberAsyncImagePainter(model = viewModel.image),
                 contentDescription = stringResource(id = R.string.coffee_image),
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .size(MaterialTheme.spacing.twoHundred)
+                    .clip(MaterialTheme.shapes.large)
             )
             Spacer(modifier = Modifier.height(MaterialTheme.spacing.eight))
             Text(
